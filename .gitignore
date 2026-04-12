@@ -1,0 +1,10 @@
+# Python environments
+.venv/
+__pycache__/
+
+# Local Database
+health_app.db
+
+# OS Files
+.DS_Store
+Thumbs.db

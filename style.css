@@ -1,0 +1,171 @@
+/* style.css - Premium Glassmorphism & Animated Gradient Dark UI Theme */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* --- HIDE DEFAULT STREAMLIT ELEMENTS --- */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden !important;}
+
+/* --- GLOBAL APP CONFIGURATION & ANIMATED BACKGROUND --- */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stApp {
+    /* Fluid animated gradient background */
+    background: linear-gradient(-45deg, #0f172a, #1e1b4b, #0f172a, #0c4a6e);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #f8fafc;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Animate standard application blocks entering */
+.main .block-container {
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+    padding-top: 3rem !important; /* give it space since we hid the header */
+}
+
+/* --- SIDEBAR CUSTOMIZATION --- */
+[data-testid="stSidebar"] {
+    background-color: rgba(15, 23, 42, 0.6) !important;
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-testid="stSidebarNav"] * {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+}
+
+/* --- PREMIUM GLASSMORPHISM CARDS --- */
+/* Targeting metric containers and other standard isolated blocks */
+div[data-testid="metric-container"], .stDataFrame {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+div[data-testid="metric-container"]:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.6);
+    box-shadow: 0 12px 40px 0 rgba(56, 189, 248, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Metric text colors */
+div[data-testid="metric-container"] label {
+    color: #cbd5e1 !important;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+div[data-testid="metric-container"] div[data-testid="stMetricValue"] {
+    color: #0ea5e9 !important;
+    font-weight: 700;
+    font-size: 2.6rem;
+    text-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+}
+
+/* --- BUTTONS --- */
+.stButton > button {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+    font-family: 'Outfit';
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+    transition: all 0.2s ease;
+}
+
+.stButton > button:hover {
+    background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.6);
+    transform: translateY(-2px) scale(1.02);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white !important;
+}
+
+/* --- CHAT BUBBLES --- */
+.stChatMessage {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+.stChatMessage[data-testid="stChatMessage"]:nth-child(even) {
+    background: rgba(14, 165, 233, 0.1);
+    border-left: 4px solid #0ea5e9;
+    border-right: none;
+    border-top: 1px solid rgba(14, 165, 233, 0.2);
+    border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+/* --- ALERTS & NOTIFICATIONS --- */
+.stAlert[data-baseweb="notification"] {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Make headers highly visible and bright white */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* --- FIX VISIBILITY OF INPUT FIELDS (When Clicked/Typing) --- */
+/* Target text inputs, number inputs, select boxes */
+div[data-baseweb="input"] > div, 
+div[data-baseweb="input"] input,
+div[data-baseweb="select"] > div, 
+div[data-baseweb="select"] span,
+div[data-baseweb="select"] div,
+ul[role="listbox"] li,
+textarea {
+    background-color: #1e293b !important;
+    color: #ffffff !important;
+}
+
+/* Add a bright border when an input is focused (clicked) */
+div[data-baseweb="input"] > div:focus-within,
+div[data-baseweb="select"] > div:focus-within {
+    border-color: #0ea5e9 !important;
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.5) !important;
+}
+
+/* Fix standard text paragraph visibility */
+p, label[data-testid="stWidgetLabel"] {
+    color: #f1f5f9 !important;
+    font-weight: 500;
+}
